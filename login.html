@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>INPUT to GET in php</title>
+<title>Login</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Acme&amp;display=swap" rel="stylesheet">
@@ -10,7 +10,10 @@
 </head>
 
 <body class="signup">
- 
+  <div id="login-homepage" class="login-hm">
+    <a href="index.html"><button  type="submit">Homepage</button></a> 
+  </div>
+  
 <div class = "wrapper">  
 
 <div class="background-image"></div>
@@ -23,7 +26,7 @@
   <!-- everything that is send thorugh the get request is a srting -->
 <br><br><br><br>
 
-  <form> 
+  <form target="_blank"   method="POST"> 
  
 <!-- name fields will become your keys -->
 <!-- when sumbmit is pressed it gets the key encodes it using "get" and sends it to login.php -->
@@ -54,12 +57,13 @@
 </div>
 
 <br>
-<button id ="buttonSubmitLogin"  type = "submit" class="btn" > Submit </button></a>
+ <button id ="buttonSubmitLogin"  type = "submit" class="btn"  onclick="savePassword()" > Submit </button></a>
 </form>
 
 
-
 </div>
+
+
 
 <script src= "script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

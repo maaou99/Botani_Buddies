@@ -309,6 +309,7 @@ h4{
 
 .signup{
     background-color: rgb(203, 146, 99);
+
 }
 
 
@@ -324,21 +325,26 @@ h4{
 
 
   .wrapper{
-
-    position: relative;
+ 
     width: 400px;
     height: 470px;
-    background: transparent;
-    border: 2px solid rgba(149, 0, 153,0.25);
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
     display: flex;
     justify-content: center;
     margin: 0 auto;
      
   }
 
-
+.login-hm{
+ background-color: rgb(160, 115, 78);
+ float: left;
+ margin: 2%;
+ padding: 1%;
+}
 
   .wrapper .form-box{
 

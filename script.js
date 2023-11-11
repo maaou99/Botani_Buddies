@@ -141,6 +141,10 @@ window.onload = function (){
   }
 
   function savePassword(){
-    alert('helel')
+    alert('Account created')
+    window.location.href = 'dashboard.html';
   }
+
+
+  
   
