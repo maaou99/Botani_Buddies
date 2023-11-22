@@ -26,21 +26,21 @@
   <!-- everything that is send thorugh the get request is a srting -->
 <br><br><br><br>
 
-  <form target="_blank"   method="POST"> 
- 
 <!-- name fields will become your keys -->
 <!-- when sumbmit is pressed it gets the key encodes it using "get" and sends it to login.php -->
 
 <div class="input-box">
   <span class="icon"> <ion-icon name="person-circle-outline"></ion-icon>  </span> 
-  <input type ="email" size="24" maxlength = "40"  name = "username" required>
-  <label>Email address:</label>
+  <input type ="text" size="24" maxlength = "40" id="userame-login"  name = "username" required>
+  <label for="">Username</label>
 </div>
+
 <br>
+
 <div class="input-box">
   <span class="icon">  <ion-icon name="eye"></ion-icon> </span> 
   <input id="password-login" type ="password" size="24" maxlength = "40"  name = "password" required>
-  <label>Password:</label>
+  <label for="">Password</label>
 </div>
 
 <div class="remember-forget">
@@ -53,13 +53,11 @@
  
 <br>
 <div class="login-signup">
-<p> <a href= "signup.php" class="register" > Don't have an account? Sign-up here </a>
+<p> <a href= "signup.html" class="register" > Don't have an account? <span style="text-decoration:underline ;">Sign-up here</span> </a>
 </div>
 
 <br>
- <button id ="buttonSubmitLogin"  type = "submit" class="btn"  onclick="savePassword()" > Submit </button></a>
-</form>
-
+<button id ="buttonSubmitLogin"    class="btn"  onclick="" > Submit </button>
 
 </div>
 
@@ -72,6 +70,8 @@
 </body>
 </html>
 
+ 
 
 
-<!-- should the client side be doing this or the server side -->
+
+ 

@@ -1,10 +1,26 @@
 
 window.onload = function (){
 
-  // document.getElementById("buttonSubmitLogin").addEventListener('click', () => {
-  //   console.log('workinngg')
-  //   document.getElementById("password-login").value
-  // })
+//   document.getElementById("buttonSubmitLogin").addEventListener('submit', () => {
+//   alert('hee')
+//   document.getElementById("password-login").value
+//  })
+ 
+if(window.location.href.includes('dashboard.html')){
+  
+  let currUsername = Object.keys(localStorage)[0]
+  document.getElementById('username-dashboard').innerHTML = currUsername
+  }
+
+  if(window.location.href.includes('login.html')){
+
+    document.getElementById("buttonSubmitLogin").addEventListener('click', () => {
+      checkPassword()})
+
+  }
+
+ 
+  
 
   document.getElementById("settings-icon").addEventListener('click', () => {
     document.getElementById('pop-up-page').style.display = 'block'
@@ -16,10 +32,48 @@ window.onload = function (){
     document.getElementById('dashboard').style.zIndex = '1'
   })
   
+  function goToDashboard(username){
+       
+     
+    
+ 
+    document.getElementById('username-dashboard').innerHTML = 'blbl'
+    
+   }
+  
+  
+   function checkPassword(){
+  
+    currentUsername = document.getElementById('userame-login').value
+    let passwordInput =  document.getElementById('password-login').value
+   
+       // Retrieve stored user data from local storage
+       const storedPassword = Object.values(localStorage);
+       const storedUsername = Object.keys(localStorage);
+      
 
-  
-  
-  
+       storedPassword.forEach((password) => {
+         
+    
+        if(password === passwordInput ){
+          storedUsername.forEach((username) => {
+            if (username == currentUsername){
+              alert("You are logged in")
+              
+              
+              window.location.href = 'dashboard.html';
+
+              //return usernameInput
+              //goToDashboard(usernameInput)
+            }  else {
+              localStorage.removeItem(username)
+            }
+          })
+          
+        } })
+ 
+  }
+
   function drawGraphs(){
     const bar = document.getElementById('myBarChart');
   
@@ -136,15 +190,38 @@ window.onload = function (){
     buttonClicked = false
   }
     
-  
+
+
   
   }
 
   function savePassword(){
-    alert('Account created')
-    window.location.href = 'dashboard.html';
+    
+
+    let password = document.getElementById('password-signup').value
+    let username =  document.getElementById('userame-signup').value
+
+    //chatGPT, 'check if a password has at least 8 caracters and has one capital letter and a number'
+    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if(regex.test(password)){
+      window.localStorage.setItem(username, password)
+      alert('Account created')
+      window.location.href = 'dashboard.html';
+
+    } else {
+      let checkPassword = document.getElementById('password-check')
+      //styling
+      checkPassword.style.fontSize = '8px'
+      checkPassword.style.color = 'rgb(133, 53, 29)'
+      checkPassword.innerHTML = 'password must be at least 8 characters longs, has one number and one capital letter'
+    };
+  
   }
 
+
+  
+
+ 
 
   
   
