@@ -233,8 +233,14 @@ h4{
 }
 
 .botani-notification{
-    padding-top: 4%;
-    padding-left: 10%;
+  padding-left: 15%;
+  padding-top: 2%;
+  font-size: 40px;
+}
+
+#botani-emojis{
+  font-size: 45px;
+
 }
 
 .botani-emergency{
@@ -438,6 +444,19 @@ h4{
     color: aliceblue;
     cursor: pointer;
   }
+
+       /* Style for hiding the default file input */
+       input[type="file"] {
+        display: none;
+    }
+
+    /* Style for the clickable image */
+    label {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+ 
  
   /* form{
     padding:10px;

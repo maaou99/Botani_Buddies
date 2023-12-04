@@ -11,7 +11,7 @@
 
 <body class="signup">
   <div id="login-homepage" class="login-hm">
-    <a href="index.html"><button  type="submit">Homepage</button></a> 
+    <a href="index.php"><button  type="submit">Homepage</button></a> 
   </div>
   
 <div class = "wrapper">  
@@ -53,12 +53,13 @@
  
 <br>
 <div class="login-signup">
-<p> <a href= "signup.html" class="register" > Don't have an account? <span style="text-decoration:underline ;">Sign-up here</span> </a>
+<p> <a href= "signup.php" class="register" > Don't have an account? <span style="text-decoration:underline ;">Sign-up here</span> </a>
 </div>
 
 <br>
-<button id ="buttonSubmitLogin"    class="btn"  onclick="" > Submit </button>
-
+ 
+<button id ="buttonSubmitLogin"    class="btn"  onclick="checkPassword()" > Submit </button>
+ 
 </div>
 
 

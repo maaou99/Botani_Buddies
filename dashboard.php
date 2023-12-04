@@ -1,5 +1,59 @@
+<?php
 
+if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getMoisture']))
+{
+  //NEW open a the db and add in the try and catch
+// get the contents from the db and output. ..
+try {
+    require_once __DIR__ . '/vendor/autoload.php';
 
+//1: connect to mongodb atlas
+$client = 
+new MongoDB\Client(
+    "mongodb+srv://negar_CART351:Faramoosh123@cluster0.a0ymu23.mongodb.net/?retryWrites=true&w=majority"
+    
+);
+
+//2: connect to collection (that exists):
+$collection = $client->BOTANI->lasttry;
+
+// // get the search field
+// $searchField = $_GET["a_search"];
+
+// //make the request
+// $resultObject = $collection->find([]);
+
+$sortOptions = ['_id' => -1];
+    
+// Fetch the last 10 documents
+$resultObject = $collection->find([], ['limit' => 10, 'sort' => ['ts' => -1]]);
+
+$arrayToReturn = [];
+foreach($resultObject as $lasttry){
+    $myPackagedData=new stdClass();
+
+    foreach($lasttry as $key => $value)
+    {
+        if($key =="moiture_level"){
+            $myPackagedData->$key =$value;
+        }
+         
+    }
+
+    $arrayToReturn[]=$myPackagedData;
+ }
+
+ echo(json_encode($arrayToReturn));
+
+//echo(json_encode($arrayToReturn)); 
+
+exit;
+}//END TRY
+catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,32 +75,76 @@
   </div>
         <div class="blur-layer"></div>
         <div id="dashboard">
-        <?php
-echo phpinfo();
-?>
             <div class="item barChart">
                 <p>Level of nutrient in Soil</p>
                 <br>
                 <canvas width="200px" height="80px" id="myBarChart"></canvas>
             </div>
             <div class="item updates">
-                <div id="update-1" class="update">
-                    Your plant needs water!
-                </div>
-                <div id="update-2" class="update">
-                    Your Botani plants wants 10 mg of Nitrogen.
-                </div>
+
+            <?php 
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+//put into try catch clause
+try {
+ 
+    //1: connect to mongodb atlas
+    $client = 
+    new MongoDB\Client(
+        "mongodb+srv://negar_CART351:Faramoosh123@cluster0.a0ymu23.mongodb.net/?retryWrites=true&w=majority"
+    );
+    // echo("valid connection");
+    // echo("<br>");
+     
+    //2: connect to collection (that exists):
+    $collection = $client->BOTANI->lasttry;
+    //echo($collection);
+
+    $result = $collection->find([]);
+   
+    $sortOptions = ['_id' => -1];
+    
+ // Get only the latest document
+ $resultObject = $collection->find([], ['sort' => $sortOptions, 'limit' => 1]);
+     
+ foreach($resultObject as $lasttry){
+    
+    $moistureMsg = $lasttry["moitureLevelMsg"];
+    
+    echo "<div id='update-1' class='update'>$moistureMsg</div>";
+
+    $moistureMsg = $lasttry["touchLevelMsg"];
+    echo " <div id='update-2' class='update'>$moistureMsg</div>";
+ }
+    
+     
+    }
+    catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+    
+?>
+    
                 <div id="update-3" class="update">
                     Update #3
                 </div>
             </div>
-            <div class="item profile">
+            <div class="item profile">\
+            <label for="filename">
+                        <img src="/assets/images/upload_icon.png" alt="Upload Icon" width="50px" height="50px" />
+            </label>
+
+                <!-- Hidden File Input -->
+                 <input type="file" id="filename" name="filename" accept="image/*" onchange="previewImage(event)" />
                 <img width = "100px" height = "100px" id = "profile-pic" src="assets/images/placeholder.png">
    
                 <div id="update-3" class="  profile-info">
+                   
+
                     <p class="profile-text">@<span id="username-dashboard"> sdfsd </span></p>
-                    <p class="profile-text"> Botani owner since <span id="date">XX/XX/XXXX</span></p>
-                    <p class="profile-text"> Number of plants <span id="date">XX</span></p>
+                    <p class="profile-text"> Last login <span id="account-creation-date">XX/XX/XXXX</span></p>
+                    <p class="profile-text"> Number of plants <span id="num-plants">1</span></p>
                 </div>
             </div>
             
@@ -83,10 +181,54 @@ echo phpinfo();
             </div>
 
             <div class="item item-9 en-dis-voice">
-                <div id="botani-modes" class="botani-notification">
-                    <p>&#128532;</p>
-                    <p id = "botani-emojis" class="">🚰〰️〰️💦🌱<p>
-                </div>
+                <?php
+            require_once __DIR__ . '/vendor/autoload.php';
+
+//put into try catch clause
+try {
+ 
+    //1: connect to mongodb atlas
+    $client = 
+    new MongoDB\Client(
+        "mongodb+srv://negar_CART351:Faramoosh123@cluster0.a0ymu23.mongodb.net/?retryWrites=true&w=majority"
+     
+    );
+    // echo("valid connection");
+    // echo("<br>");
+     
+    //2: connect to collection (that exists):
+    $collection = $client->BOTANI->lasttry;
+    //echo($collection);
+
+    $result = $collection->find([]);
+   
+    $sortOptions = ['_id' => -1];
+    
+ // Get only the latest document
+ $resultObject = $collection->find([], ['sort' => $sortOptions, 'limit' => 1]);
+     
+ foreach($resultObject as $lasttry){
+    
+    $moistureEmoji = $lasttry["emojiMsgTouch"];
+    $touchEmoji = $lasttry["emojiMsgMoisture"];
+
+    echo "   <div id='botani-modes' class='botani-notification'>
+    
+    <p>&#$touchEmoji</p>
+    <p id = 'botani-emojis'>&#$moistureEmoji;<p>
+ </div>";
+    
+  
+ }
+    
+     
+    }
+    catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+    
+?>
+                 
                 
             </div>
            
