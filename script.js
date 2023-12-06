@@ -181,7 +181,10 @@ function loadImage(){
     const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
     if(regex.test(password)){
  
-      window.localStorage.setItem(username, password)
+      localStorage.setItem(username, password)
+
+      updateLocalStorage(username)
+
       alert('Account created')
       window.location.href = 'dashboard.php';
 
@@ -224,16 +227,8 @@ function loadImage(){
                     // Update the current user's password in local storage
                     localStorage.setItem(currentUsername, passwordInput);
 
-                    // Move the updated entry to the end of local storage
-                    const updatedKeys = Object.keys(localStorage);
-                    const updatedUsernameIndex = updatedKeys.indexOf(currentUsername);
-                    if (updatedUsernameIndex !== -1) {
-                        updatedKeys.splice(updatedUsernameIndex, 1);
-                        updatedKeys.push(currentUsername);
-
-                        // Save the updated order to local storage
-                        localStorage.setItem('usernames', JSON.stringify(updatedKeys));
-                    }
+                    updateLocalStorage(currentUsername)
+                    
 
 
                     alert("You are logged in");
@@ -247,6 +242,21 @@ function loadImage(){
     if (!found) {
         alert("Incorrect username or password");
     }
+}
+
+function updateLocalStorage(user){
+  // Move the updated entry to the end of local storage
+  const updatedKeys = Object.keys(localStorage);
+  const updatedUsernameIndex = updatedKeys.indexOf(user);
+  if (updatedUsernameIndex !== -1) {
+      updatedKeys.splice(updatedUsernameIndex, 1);
+      updatedKeys.push(user);
+
+      // Save the updated order to local storage
+      localStorage.setItem('usernames', JSON.stringify(updatedKeys));
+  }
+
+  
 }
 
  // Function to preview the selected image
