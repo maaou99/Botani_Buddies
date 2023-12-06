@@ -312,23 +312,15 @@ h4{
    
 }
 
-
 .signup{
     background-color: rgb(203, 146, 99);
-
 }
 
-
-
-
   p label{
-
     display:inline-block;
     width:10%;
     color:rgba(149, 0, 153,0.85);
-   
   }
-
 
   .wrapper{
  
@@ -338,7 +330,6 @@ h4{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -353,15 +344,12 @@ h4{
 }
 
   .wrapper .form-box{
-
     width: 100%;
     padding: 40px;
     background-color: rgba(216, 104, 73, 0.742);
-
-    
   }
-  h2{
 
+  h2{
     font-size: 2em;
     color:rgba(129, 58, 38, 0.742);
     text-align: center;
@@ -455,6 +443,12 @@ h4{
         display: inline-block;
         cursor: pointer;
     }
+
+   #upload-img{
+    position: absolute;
+    margin-left: 9%;
+    margin-top: 8%;
+   } 
 
  
  

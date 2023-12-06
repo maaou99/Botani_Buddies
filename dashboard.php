@@ -1,5 +1,23 @@
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_FILES) {
+        $uploadDirectory = "images/"; // Specify the folder where you want to save the images
+
+        $fname = $_FILES['filename']['name'];
+        $tempFilePath = $_FILES['filename']['tmp_name'];
+        $targetFilePath = $uploadDirectory . $fname;
+
+        // Move the uploaded file to the specified folder
+        if (move_uploaded_file($tempFilePath, $targetFilePath)) {
+            echo $targetFilePath;
+        } else {
+            echo "Error uploading file.";
+        }
+    }
+    exit;
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getMoisture']))
 {
   //NEW open a the db and add in the try and catch
@@ -65,7 +83,7 @@ catch (Exception $e) {
     
 </head>
 <body onload=" ">
-  
+
     <div id="container">
     <div id="button-homepage">
     <form action="index.php" method="post">  
@@ -130,13 +148,18 @@ try {
                     Update #3
                 </div>
             </div>
-            <div class="item profile">\
-            <label for="filename">
-                        <img src="/assets/images/upload_icon.png" alt="Upload Icon" width="50px" height="50px" />
-            </label>
-
-                <!-- Hidden File Input -->
+            <div class="item profile">
+            <form id="insertGallery" action="" enctype ="multipart/form-data">
+            <label for="filename" id="upload-img">
+                    <img name = 'filename' id="profile-img" src="/assets/images/upload.png" alt="Upload Icon" width="40px" height="40px" />
+                     <!-- Hidden File Input -->
                  <input type="file" id="filename" name="filename" accept="image/*" onchange="previewImage(event)" />
+           
+                </label>
+      
+        </form>
+
+               
                 <img width = "100px" height = "100px" id = "profile-pic" src="assets/images/placeholder.png">
    
                 <div id="update-3" class="  profile-info">

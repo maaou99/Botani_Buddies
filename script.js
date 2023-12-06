@@ -1,7 +1,8 @@
 
 window.onload = function (){
 
-let lastLogin;
+let lastWordWithoutQuotes;
+console.log()
 
 if(window.location.href.includes('dashboard.php')){
   
@@ -19,19 +20,79 @@ if(window.location.href.includes('dashboard.php')){
   });
 
   const keys = Object.keys(localStorage);
-  const lastElement = keys[keys.length - 1];
-  let currUsername = lastElement;
-  
-  document.getElementById('username-dashboard').innerHTML = currUsername
+  let usernames = localStorage.getItem('usernames')
+  let getUsername;
+
+  // Use regular expression to find all words within double quotes
+  let matches = usernames.match(/"([^"]*)"/g);
+
+  console.log(matches)
+
+  // Get the last match (last word within double quotes)
+  let  lastWord = matches ? matches[matches.length - 1] : null;
+
+  // Remove the quotes from the last word
+  lastWordWithoutQuotes = lastWord ? lastWord.replace(/"/g, '') : null;
+ 
+  document.getElementById('username-dashboard').innerHTML = lastWordWithoutQuotes
 
   const currentDate = new Date();
 
   // Format the date as dd/mm/yyyy
   const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+  
   lastLogin = formattedDate
   document.getElementById('account-creation-date').innerHTML = lastLogin
+  
+  if(localStorage.getItem(lastWordWithoutQuotes + "_img")){
+    loadImage()
+  }
 
 }
+
+document.querySelector("#filename").addEventListener("change", function(){
+  event.preventDefault();
+  console.log("button clicked");
+  console.log("form has been submitted");
+
+  //part two
+  let form = document.querySelector("#insertGallery");
+  let formData = new FormData(form);
+  /*console.log to inspect the data */
+ for (let pair of formData.entries()) {
+  console.log(pair[0]+ ', ' + pair[1]);
+
+}
+
+fetch('/dashboard.php', {
+method: 'POST',
+body: formData
+})
+.then(function (response) {
+  console.log("got here with response ...");
+  return response.text();
+})
+  .then(result => {
+ 
+    imgLocalStorage(result, lastWordWithoutQuotes);
+  })
+})
+.catch(error => {
+console.error('Error:', error);
+});
+
+function imgLocalStorage(imgPath){
+
+
+  localStorage.setItem(lastWordWithoutQuotes + "_img", imgPath)
+
+}
+
+function loadImage(){
+  let location = localStorage.getItem(lastWordWithoutQuotes + "_img")
+  let profileImg = document.getElementById('profile-pic')
+  profileImg.src = location
+}}
 
   document.getElementById("settings-icon").addEventListener('click', () => {
     document.getElementById('pop-up-page').style.display = 'block'
@@ -44,7 +105,7 @@ if(window.location.href.includes('dashboard.php')){
   })
   
   function drawGraphs(response){
-    console.log('sooo', response[0].moiture_level)
+   
     const bar = document.getElementById('myBarChart');
   
     new Chart(bar, {
@@ -98,8 +159,7 @@ if(window.location.href.includes('dashboard.php')){
     });
   }
 
-  }
-  
+
   let buttonClicked = false
   //localStorage.clear()
   function emergencyButton(id){
@@ -110,12 +170,9 @@ if(window.location.href.includes('dashboard.php')){
   } else {
     document.getElementById(id).innerHTML = 'ON'
     buttonClicked = false
-  }
-    
-  }
+  }}
 
   function savePassword(){
-   
    
     let password = document.getElementById('password-signup').value
     let username =  document.getElementById('userame-signup').value
@@ -156,18 +213,32 @@ if(window.location.href.includes('dashboard.php')){
 
     storedPassword.forEach((password, index) => {
         if (password === passwordInput) {
-            console.log(password, passwordInput)
+          
             storedUsername.forEach((username) => {
                 if (username === currentUsername) {
-              
 
-                      // Update the current user's password in local storage
-                      localStorage.setItem(currentUsername, passwordInput);;
+                  
+                    // Remove the current user's entry from local storage
+                    localStorage.removeItem(currentUsername);
+
+                    // Update the current user's password in local storage
+                    localStorage.setItem(currentUsername, passwordInput);
+
+                    // Move the updated entry to the end of local storage
+                    const updatedKeys = Object.keys(localStorage);
+                    const updatedUsernameIndex = updatedKeys.indexOf(currentUsername);
+                    if (updatedUsernameIndex !== -1) {
+                        updatedKeys.splice(updatedUsernameIndex, 1);
+                        updatedKeys.push(currentUsername);
+
+                        // Save the updated order to local storage
+                        localStorage.setItem('usernames', JSON.stringify(updatedKeys));
+                    }
+
 
                     alert("You are logged in");
                     found = true;
                     window.location.href = 'dashboard.php';
-                    
                 }
             });
         }
@@ -178,9 +249,12 @@ if(window.location.href.includes('dashboard.php')){
     }
 }
 
-function previewImage(event) {
+ // Function to preview the selected image
+ function previewImage(event) {
   const input = event.target;
   const preview = document.getElementById('imagePreview');
+  const imgPreview = document.getElementById('preview');
+  const profilePic = document.getElementById('profile-pic');
 
   while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
@@ -192,11 +266,43 @@ function previewImage(event) {
       const img = document.createElement('img');
       img.src = URL.createObjectURL(files[0]);
       preview.appendChild(img);
+
+      // Set the chosen image as the preview on the upload image button
+      imgPreview.src = URL.createObjectURL(files[0]);
+
+      // Set the chosen image for the profile pic display
+      profilePic.src = URL.createObjectURL(files[0]);
   }
 }
 
+// Function to preview the selected image
+function previewImage(event) {
+  const input = event.target;
+  const preview = document.getElementById('imagePreview');
+  const imgPreview = document.getElementById('preview');
+  const profilePic = document.getElementById('profile-pic');
 
+  // while (preview.firstChild) {
+  //     preview.removeChild(preview.firstChild);
+  // }
 
+  const files = input.files;
+
+  if (files.length > 0) {
+      const img = document.getElementById('profile-pic');
+      img.src = URL.createObjectURL(files[0]);
+     
+      //preview.appendChild(img);
+
+      // Set the chosen image as the preview on the upload image button
+      //imgPreview.src = URL.createObjectURL(files[0]);
+
+      // Set the chosen image for the profile pic display
+      profilePic.src = URL.createObjectURL(files[0]);
+
+     
+  }
+}
 
   
 
