@@ -6,7 +6,7 @@ console.log()
 
 if(window.location.href.includes('dashboard.php')){
   
-  //console.log("ready");
+
 
   fetch("dashboard.php/?getMoisture=true")
      .then(function (response) {
@@ -111,7 +111,7 @@ function loadImage(){
     new Chart(bar, {
       type: 'bar',
       data: {
-        labels: ['Phosporus', 'Nitrogen', 'Potassium'],
+        labels: ['Protect', 'Nurture', 'Kindness'],
         datasets: [{
           label: 'mg/kg',
           xAxisID: 'fds',
@@ -161,7 +161,7 @@ function loadImage(){
 
 
   let buttonClicked = false
-  //localStorage.clear()
+ 
   function emergencyButton(id){
   if(!buttonClicked){
     document.getElementById(id).innerHTML = 'OFF'
@@ -292,9 +292,7 @@ function previewImage(event) {
   const imgPreview = document.getElementById('preview');
   const profilePic = document.getElementById('profile-pic');
 
-  // while (preview.firstChild) {
-  //     preview.removeChild(preview.firstChild);
-  // }
+
 
   const files = input.files;
 
@@ -302,16 +300,36 @@ function previewImage(event) {
       const img = document.getElementById('profile-pic');
       img.src = URL.createObjectURL(files[0]);
      
-      //preview.appendChild(img);
 
-      // Set the chosen image as the preview on the upload image button
-      //imgPreview.src = URL.createObjectURL(files[0]);
 
       // Set the chosen image for the profile pic display
       profilePic.src = URL.createObjectURL(files[0]);
 
      
   }
+}
+
+if(location.href.includes('login.php')){
+  // Setup password toggle for login
+setupPasswordToggle("#togglePasswordLogin", "#password-login");
+
+} else if(location.href.includes('signup.php'))// Setup password toggle for login
+setupPasswordToggle("#togglePasswordSignup", "#password-signup");{
+
+}
+
+function setupPasswordToggle(toggleId, passwordId) {
+  const togglePassword = document.querySelector(toggleId);
+  const password = document.querySelector(passwordId);
+
+  togglePassword.addEventListener("click", function () {
+    // toggle the type attribute
+    const type = password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+
+    // toggle the icon class
+    this.classList.toggle("bi-eye");
+  });
 }
 
   

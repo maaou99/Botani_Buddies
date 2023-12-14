@@ -6,15 +6,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Acme&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body class="signup">
-  <div id="login-homepage" class="login-hm">
-    <a href="index.php"><button  type="submit">Homepage</button></a> 
+<body class="login">
+  <div class="homepage">
+    <a href="homepage.html"><button  type="submit">Homepage</button></a> 
   </div>
   
 <div class = "wrapper">  
+
+<!-- <div class="plant-image">
+ 
+  <img id="img3" src="images/jungle top.png" alt="Your Image">
+
+
+</div> -->
 
 <div class="background-image"></div>
 
@@ -30,7 +40,7 @@
 <!-- when sumbmit is pressed it gets the key encodes it using "get" and sends it to login.php -->
 
 <div class="input-box">
-  <span class="icon"> <ion-icon name="person-circle-outline"></ion-icon>  </span> 
+  <span class="icon"> <i class="bi bi-person"></i> </span> 
   <input type ="text" size="24" maxlength = "40" id="userame-login"  name = "username" required>
   <label for="">Username</label>
 </div>
@@ -38,9 +48,11 @@
 <br>
 
 <div class="input-box">
-  <span class="icon">  <ion-icon name="eye"></ion-icon> </span> 
   <input id="password-login" type ="password" size="24" maxlength = "40"  name = "password" required>
+<span class="icon" > <i class="bi bi-eye-slash" id="togglePasswordLogin" style=" cursor: pointer;"></i> </span> 
+  
   <label for="">Password</label>
+
 </div>
 
 <div class="remember-forget">

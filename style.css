@@ -1,7 +1,10 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
+@font-face {
+  font-family: 'title';
+  src: url("Chelsea_Market/ChelseaMarket-Regular.ttf") format('truetype');
+}
 *
 {
     margin: 0;
@@ -21,7 +24,7 @@ body
     cursor: default;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 1px;
-    
+    font-size: 80px; 
 }
 
 button {
@@ -32,8 +35,7 @@ button {
     margin: 0;           /* Remove margin if necessary */
     color:#fff;
     cursor: pointer;
-  
-
+    font-size: 80px; 
 }
 
 #button-homepage{
@@ -51,7 +53,6 @@ button {
 }
 
 #pop-up-page{
-
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,12 +60,10 @@ button {
     padding:5%;
     transform: translate(-50%,-50%);
     display: none;
-
 }
 
 #plant-img{
     position: absolute;
-    
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -312,78 +311,93 @@ h4{
    
 }
 
+/* ==================================================== */
+
+
+
 .signup{
-    background-color: rgb(203, 146, 99);
+    background-color: rgb(133, 78, 42);
+    font-size: 60px;
 }
 
+.login{
+  background-color: rgb(133, 78, 42);
+  font-size: 60px;
+}
+
+
+ 
+.homepage{
+  background-color: rgb(160, 115, 78);
+  float: left;
+  margin: 2%;
+  padding: 1%;
+  font-size: 60px;
+  position: fixed;
+ }
+
+
+
   p label{
+
     display:inline-block;
     width:10%;
     color:rgba(149, 0, 153,0.85);
+   
   }
+
 
   .wrapper{
- 
-    width: 400px;
-    height: 470px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-     
+
+    width: 80%;
+    margin: auto;
   }
 
-.login-hm{
- background-color: rgb(160, 115, 78);
- float: left;
- margin: 2%;
- padding: 1%;
-}
 
-  .wrapper .form-box{
-    width: 100%;
+
+  .form-box{
     padding: 40px;
-    background-color: rgba(216, 104, 73, 0.742);
+    margin-top: 200px;
+    background-color: rgb(172, 191, 255);
   }
 
   h2{
+    font-family: 'title';
     font-size: 2em;
-    color:rgba(129, 58, 38, 0.742);
+    color:rgba(223, 223, 223);
     text-align: center;
-   
   }
 
   .input-box{
     position: relative;
-    height: 50px;
+    height: 100px;
     justify-content: space-between;
   }
 
   .input-box label {
     position: absolute;
-    transform: translateY(-250%);
+    transform: translateY(-100%);
     left: 5px;
+    top: 5px;
   }
-
 
   .input-box .icon{
     position: absolute;
-    top: 3px;
+   display: flex;
+   top: 4px;
     right: 4px;
   }
 
   .background-image {
-    background-image: url('images/plant.jpeg');
+    /* background-image: url('images/plant.jpeg'); */
     background-size: cover;
-    width: 100%;
     z-index: 2;
  }
 
   input{
+    font-size: 0.7em;
     width:100%;
+    height: 80%;
     
   }
   input[type=submit]{
@@ -391,25 +405,37 @@ h4{
   }
 
   input[type=checkbox]{
-    width: 20px;
+    width: 100px;
     position: absolute;
+
+  }
+  .btn{
+    position: static;
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgba(113, 211, 136);
+    color: aliceblue;
+    cursor: pointer;
   }
 
+#password-check{
+  font-size: 1em;
+}
 .register{
-    font-size: 14px;
+    font-size: 1em;
 }
   .remember-forget{
+    position: relative;
    
-    margin: -15px 0 15px;
-    font-size: 12px;
+    margin: 45px 0 15px;
+    
     display: flex;
     justify-content: space-between;
-    
   }
 
   .remember-forget > p {
-   
-    margin-left:25px
+    font-size: 1em;
+    margin-left:100px
     
   }
 
@@ -424,14 +450,7 @@ h4{
     text-decoration: underline;
   }
 
-  .btn{
-    position: static;
-    width: 100%;
-    height: 45px;
-    background-color: rgba(211, 134, 113, 0.742);
-    color: aliceblue;
-    cursor: pointer;
-  }
+
 
        /* Style for hiding the default file input */
        input[type="file"] {
@@ -444,15 +463,32 @@ h4{
         cursor: pointer;
     }
 
-   #upload-img{
-    position: absolute;
-    margin-left: 9%;
-    margin-top: 8%;
-   } 
-
  
  
-  /* form{
+ form{
     padding:10px;
     background:rgba(149, 0, 153,0.25);
-  } */
+  } 
+
+  .plant-image {
+position: absolute;
+    width: 100%; /* Set the container width to 100% of the viewport width */
+  height: 100%;
+  
+  }
+  
+  /* Style the image within the container */
+  #img3{
+  z-index: 1;
+    position: fixed;
+    top: 0px;
+    left:0px;
+  
+    
+    /* Position the image vertically in the center */
+
+
+  }
+
+
+

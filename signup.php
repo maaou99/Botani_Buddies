@@ -6,12 +6,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Acme&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body class="signup">
-  <div id="login-homepage" class="login-hm">
-    <a href="index.html"><button  type="submit">Homepage</button></a> 
+  <div class="homepage">
+    <a href="homepage.html"><button  type="submit">Homepage</button></a> 
   </div>
   
 <div class = "wrapper">  
@@ -32,15 +35,16 @@
 <!-- when sumbmit is pressed it gets the key encodes it using "get" and sends it to login.php -->
 
 <div class="input-box">
-  <span class="icon"> <ion-icon name="person-circle-outline"></ion-icon>  </span> 
+<span class="icon"> <i class="bi bi-person"></i> </span> 
   <input type ="email" id="userame-signup"  size="24" maxlength = "40"  name = "username" required>
   <label>Username</label>
 </div>
 <br>
 <div class="input-box">
-  <span class="icon">  <ion-icon name="eye"></ion-icon> </span> 
-  <input id="password-signup" type ="password" size="24" maxlength = "40"  name = "password" required>
-  <label> New Password:</label>
+<input id="password-signup" type ="password" size="24" maxlength = "40"  name = "password" required>
+<span class="icon" > <i class="bi bi-eye-slash" id="togglePasswordSignup" style=" cursor: pointer;"></i> </span> 
+  
+  <label for="">New Password</label>
 </div>
 
 <div class="remember-forget">
@@ -53,7 +57,10 @@
 <p id="password-check"></p>
  
 <br>
- 
+
+<div class="login-signup">
+<p> <a href= "login.php" class="register" > Already have an account? <span style="text-decoration:underline ;"> Login here  </a>
+</div>
 
 <br>
 
@@ -72,3 +79,5 @@
 
 
 <!-- should the client side be doing this or the server side -->
+
+

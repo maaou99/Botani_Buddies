@@ -1,0 +1,421 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@font-face {
+  font-family: 'title';
+  src: url("/Chelsea_Market/ChelseaMarket-Regular.ttf") format('truetype');
+}
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* Remove underline */
+    color: inherit;        /* Inherit text color from parent */
+    outline: none;         /* Remove outline (focus) */
+  }
+
+html,
+body
+{
+    cursor: default;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+    /* overflow-y: hidden; */
+}
+
+button {
+  
+  border: none;        /* Remove the border */
+  background: none;    /* Remove the background */
+  outline: none;       /* Remove the outline (focus) */
+  padding: 0;          /* Remove padding if necessary */
+  margin: 0;           /* Remove margin if necessary */
+  color:#fff;
+  cursor: pointer;
+  font-size: 20px; 
+}
+
+#button-homepage{
+  position: fixed;
+
+  left: 1%;
+  top: 1%;
+  padding: 1%;
+  border: 2px solid rgb(255, 255, 255);
+  z-index: 2;
+}
+
+.button-hmp{
+
+  letter-spacing: 8px;
+}
+
+.settings{
+  z-index: 2;
+  position: fixed;
+  left:0px;
+  top:60px;
+    margin-left: 2%;
+
+    text-align: center;
+   
+ }
+
+
+#dashboard{
+  position: relative;
+  width: 100%;
+  display: flex;
+  
+  flex-direction:row-reverse;
+  
+  overflow-x: auto;   /* Enable horizontal scrolling */
+
+  background-image: url('assets/images/vintage-plant.jpg');
+
+
+
+
+}
+
+
+
+
+
+#dashboard section{
+
+  min-width: 100%;
+height:auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#dashboard section:nth-child(2){
+  background: #e2fcff;
+}
+#dashboard section:nth-child(3){
+  background: #d0eaff;;
+}
+#dashboard section:nth-child(4){
+  background: rgba(55, 150, 159, 0.7);
+}
+
+#dashboard section:nth-child(5){
+  background: rgb(98, 25, 161);
+}
+
+#dashboard section:nth-child(6){
+  background: rgb(30, 148, 20);
+}
+
+
+
+.profile{
+  max-width: 800px;
+  padding: 150px;
+  text-align: center;
+
+
+    background-color: rgba(255, 255, 255, 0.606);
+ 
+
+    display: flex;
+    justify-content: center;
+   
+     position: absolute;
+     top:40%;
+     left:50%;
+     transform: translate(-50%,-50%);
+    
+}
+
+.profile-info{
+
+    top: 50%;
+    font-size: 20px;
+    padding:1% ;
+    width: 200px;
+    margin: 4%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+
+.profile-text{
+    margin-top: 2%;
+}
+
+ #profile-pic{
+  border-radius: 50px;
+  position: absolute;
+  left: 25%;
+  top: 10%;
+}
+
+ 
+#upload-img{
+  position: absolute;
+  left: 70%;
+  top: 20%;
+} 
+
+.plant-image {
+  position: absolute;
+ 
+
+}
+
+/* Style the image within the container */
+#img3{
+  z-index: 3;
+  transform: translate(-50%, -50%); /* Center the image precisely */
+  top:150px;
+position: absolute;
+  width: 800px; /* Make the image take 100% of the container width */
+ height: 300px;
+}
+
+
+.botani-gtk{ 
+
+  z-index: 2;
+  font-size: 20px;
+  width: 250px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.606);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 600px;
+       
+}
+
+#pop-up-page{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(210, 117, 40);
+    padding:5%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+
+#plant-img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#leave-popup-page{
+    float: right;
+    margin-top: 20%;
+}
+
+.button-emergency {
+position:absolute;
+}
+
+.text-with-button {
+    display: flex;
+    align-items: center;
+  }
+  
+  .text-with-button p {
+    margin-right: 10px; /* Adjust the spacing between text and button */
+  }
+  
+  .text-with-button button, #leave-popup-page {
+    padding: 10px 20px;
+    background-color: rgb(203, 146, 99); 
+
+  }
+
+
+
+h4{
+    text-align: center;
+     
+    color: rgb(240, 227, 215); 
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: rgba(203, 146, 99);  ;
+}
+
+
+.blur-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px); /* Add blur effect to the background */
+    z-index: 0; /* Ensure this layer stays on top of the background */
+  }
+
+  .st0{fill:#FFFFFF;stroke:#4e4e4e;stroke-miterlimit:10;}
+  .st1{font-family:'MyriadPro-Regular'; fill:rgba(203, 146, 99, 0.564);}
+  .st2{font-size:17.5886px; z-index: 999; stroke:rgba(203, 146, 99, 0.564); }
+
+
+
+
+.item{
+    
+    background-color: rgba(255, 255, 255, 0.627);
+    border: 5px solid rgb(255, 255, 255);
+    z-index: 2;
+}
+
+
+.barChart{
+  position:absolute;
+  top: 50%;
+  margin:auto;
+  
+  text-align: center;
+  padding-top: 2%;
+
+}
+
+.lineChart{
+position:absolute;
+top:20%;
+margin:auto;
+text-align: center;
+padding-top: 2%;
+}
+
+
+.item-9{
+    
+   position: absolute;
+   top: 500px;
+   width: 350px;
+
+   margin: auto;
+}
+
+.item-6{
+    margin-bottom: 7%;
+}
+
+.item-10{
+    margin-bottom: 9%;
+}
+
+#botani-modes{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+
+   
+}
+
+.botani-voice-text{
+ 
+    margin-left: 60px;
+    font-size: 12px;
+
+}
+
+.item-4{
+
+  position:fixed;
+right:0px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    margin: 2%;  
+ 
+}
+
+
+
+
+.botani-button{
+
+    margin-right: 70px;
+    background-color: rgb(59, 189, 59);
+    margin-left: 9%;
+    color: white;
+    border: 2px solid #ffffff00;
+    padding: 2%;
+    
+}
+
+#botani-emojis{
+    font-size: 18px;
+}
+
+#botani-notification-button{
+    margin-right: 25px;
+}
+
+.botani-notification{
+  padding-left: 15%;
+  padding-top: 2%;
+  font-size: 40px;
+}
+
+#botani-emojis{
+  font-size: 45px;
+
+}
+
+.botani-emergency{
+    padding-left: 10%;
+}
+
+#botani-gtk{
+     
+    display: flex;
+    justify-content: center; /* Horizontally center text */
+    align-items: center;
+    margin-top: 7%;
+
+}
+
+.item-11, .profile, .item-5, .item-10{
+    
+    margin-right: 7%;
+}
+
+
+.updates{
+
+position:absolute;
+top: 200px;
+width: 350px;
+}
+
+
+
+.update{
+
+    padding: 5%;
+    height: 35px;
+    margin: 3%;
+    background-color: rgba(255, 255, 255, 0.80);
+     
+}
+
+
+
+/* ==================================================== */
+
+
+
+
+       /* Style for hiding the default file input */
+       input[type="file"] {
+        display: none;
+    }
+
